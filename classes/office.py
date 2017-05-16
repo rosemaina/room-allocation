@@ -1,4 +1,4 @@
-from dojoRoom import Room
+from room import Room
 class Office(Room):
 
 	def __init__(self,room_name, room_type='office', room_capacity=6):

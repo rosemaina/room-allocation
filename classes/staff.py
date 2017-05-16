@@ -1,4 +1,4 @@
-from dojoPerson import Person 
+from person import Person 
 class Staff(Person):
 
 	def __init__(self, last_name, first_name , person_type='staff', wants_accomodation='N'):

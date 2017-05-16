@@ -21,19 +21,3 @@ state = Person('Maina', 'Rose', 'F','fellow', 'Y')
 print (state.get_full_name())
 	
 	
-
-
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-		
