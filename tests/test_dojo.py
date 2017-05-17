@@ -1,5 +1,8 @@
 import unittest
 
+import sys 
+from os import path 
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from dojo import Dojo 
 from person import Person 
 from room import Room, Office 
@@ -30,4 +33,5 @@ class TestDojo(unittest.TestCase):
 		self.assertEqual(result, "A person called maina rose has been created.")
 
 
-unittest.main()
+if __name__ == '__main__':
+	unittest.main()

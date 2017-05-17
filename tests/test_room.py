@@ -1,4 +1,7 @@
 import unittest
+import sys 
+from os import path 
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from room import Room
 
 class TestRoom(unittest.TestCase):
@@ -16,6 +19,8 @@ class TestRoom(unittest.TestCase):
 		self.assertEqual(len(self.room_instance.room_occupants), 1)
 
 
-unittest.main()
+
+if __name__ == '__main__':
+	unittest.main()
 
 
