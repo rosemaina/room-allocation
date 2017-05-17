@@ -1,0 +1,35 @@
+# Text Editor files #
+
+###################
+
+*.pyc
+
+
+
+
+
+# Other files #
+
+###################
+
+*.json
+
+
+
+# Folders #
+
+###################
+
+include/
+
+lib/
+
+.cache/
+
+__pycache__/
+.idea/
+virtual/
+
+local/
+
+bin/
