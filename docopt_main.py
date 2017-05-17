@@ -5,7 +5,7 @@ interactive command application.
 
 Usage:
     create_room <room_type> <room_name>... 
-    add_person <last_name> <first_name> <gender> <person_type> <wants accomodation>
+    add_person <last_name> <first_name> <person_type> [<wants accomodation>]
 
 Options:
     -i, --interactive  Interactive Mode
@@ -64,6 +64,8 @@ class MyInteractive (cmd.Cmd):
         room_type = arg["<room_type>"]
         rooms = arg["<room_name>"]
 
+        if room_type and rooms:
+
         print(arg)
 
     @docopt_cmd
@@ -83,10 +85,6 @@ class MyInteractive (cmd.Cmd):
       
       # print(type(wants_accomodation))
         print(arg)
-
-     @docopt_cmd
-    def do_a(self, arg):
-        """Usage: """
 
     def do_quit(self, arg):
         """This quits out of Interactive Mode."""

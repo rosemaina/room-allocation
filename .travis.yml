@@ -9,4 +9,4 @@ python:
 install: "pip install -r requirements.txt"
 
 # This command is used to run tests
-script: py.test
+script: nosetests tests/
