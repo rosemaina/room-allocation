@@ -1,7 +1,0 @@
-# from dojo import *
-# from person import *
-# from staff import *
-# from fellow import *
-# from room import *
-# from living import *
-# from office import *
