@@ -33,3 +33,11 @@ virtual/
 local/
 
 bin/
+
+
+
+        __pycache__/docopt_main.cpython-34.pyc
+        __pycache__/dojo.cpython-34.pyc
+        __pycache__/person.cpython-34.pyc
+        __pycache__/room.cpython-34.pyc
+        tests/__pycache__/__init__.cpython-34.pyc

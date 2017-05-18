@@ -32,6 +32,12 @@ class TestDojo(unittest.TestCase):
 		result = self.dojo_instance.add_person( "Maina", "Rose", "Staff", "N")
 		self.assertEqual(result, "A person called maina rose has been created.")
 
+	def test_allocate_room(self):
+		person = self.dojo_instance.allocate_room('maina rose')
+		
+		#self.assertEqual
+	
+
 
 if __name__ == '__main__':
 	unittest.main()

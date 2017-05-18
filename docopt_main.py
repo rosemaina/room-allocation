@@ -1,11 +1,12 @@
-#!/usr/bin/env python
 """
 This example uses docopt with the built in cmd module to demonstrate an
 interactive command application.
-
-Usage:
-    create_room <room_type> <room_name>... 
-    add_person <last_name> <first_name> <person_type> [<wants accomodation>]
+Usage: Dojo
+    Dojo create_room <room_type> <room_name>... 
+    Dojo add_person <last_name> <first_name> <person_type> [<wants_accomodation>]
+    Dojo return_non_full_room <room_list> <max_space>
+    Dojo (-i| --interactive)
+    Dojo (-h| --help)
 
 Options:
     -i, --interactive  Interactive Mode
@@ -19,6 +20,7 @@ import cmd
 # This shows that you are importing the docopt function from the docopt module
 # Docopt is library  for parsing command line arguments
 from docopt import docopt, DocoptExit
+from dojo import Dojo
 
 
 def docopt_cmd(func):
@@ -54,37 +56,56 @@ def docopt_cmd(func):
 
 class MyInteractive (cmd.Cmd):
     intro = 'Welcome to my Interactive Program!' \
-        + ' (type help for a list of commands.)'
-    prompt = '(my_program) '
-    file = None
+        + ' (Type help for a list of commands.)'
+    prompt = '(Dojo)'
+
+    dojo = Dojo()
+ 
 
     @docopt_cmd
     def do_create_room(self, arg):
         """Usage: create_room <room_type> <room_name>... """
         room_type = arg["<room_type>"]
-        rooms = arg["<room_name>"]
+        room_name = arg["<room_name>"]
 
-        if room_type and rooms:
-
-        print(arg)
+        for room in room_name:
+            print(self.dojo.create_room(room_type, room))
 
     @docopt_cmd
     def do_add_person(self, arg):
-        """Usage:  add_person <last_name> <first_name> <gender>  <person_type> <wants accomodation>
+        """Usage:  add_person <last_name> <first_name> <person_type> [<wants_accomodation>]
         """
         
         last_name = arg["<last_name>"]
         first_name = arg["<first_name>"]
-        person_type = arg["<person_type"]
+        person_type = arg["<person_type>"]
 
 
-        if arg["--wants_accomodation"] is None:
+        if arg["<wants_accomodation>"] is None:
             wants_accomodation = "N"
         else:
-            wants_accomodation = arg["--wants_accomodation"]
-      
-      # print(type(wants_accomodation))
-        print(arg)
+            wants_accomodation = arg["<wants_accomodation>"]
+
+        print (self.dojo.add_person(last_name, first_name, person_type, wants_accomodation))
+        print(self.dojo.return_non_full_room(person))
+        # print(type(wants_accomodation))
+      #   print(arg)
+
+    # @docopt_cmd
+    # def return_non_full_room(person):
+        
+    #     pass
+
+    # @docopt_cmd
+    # def do_allocate_room(self, arg):
+    #     """Usage:  allocate_room 
+    #     """
+    #     person = arg["<person>"]
+
+    #     self.dojo.allocate_room(person)
+    #     # print(arg)
+
+
 
     def do_quit(self, arg):
         """This quits out of Interactive Mode."""
