@@ -1,0 +1,5 @@
+{
+  "dojo_app/test_dojo.py": true,
+  "dojo_app/test_person.py": true,
+  "dojo_app/test_room.py": true
+}
