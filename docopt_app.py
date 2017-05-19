@@ -2,22 +2,25 @@
 """
 This example uses docopt with the built in cmd module to demonstrate an
 interactive command application.
+
 Usage:
-    gittest create_room <room_type> <room_name>...
-    gittest add_person <last_name> <first_name> <person_type> [<wants accomodation>]
-    gittest (-i | --interactive)
-    gittest (-h | --help | --version)
+    docopt_app create_room <room_type> <room_name>... 
+    docopt_app add_person <last_name> <first_name> <person_type> [<wants accomodation>]
+
 Options:
     -i, --interactive  Interactive Mode
     -h, --help  Show this screen and exit.
 """
+# The above usage string shows that docoppt will read and be used
+#to determine whether or not the user has passed valid arguements.
 
 import sys
 import cmd
+# This shows that you are importing the docopt function from the docopt module
+# Docopt is library  for parsing command line arguments
 from docopt import docopt, DocoptExit
-from dojo import Dojo
 
-dojo = Dojo()
+
 def docopt_cmd(func):
     """
     This decorator is used to simplify the try/except block and pass the result
@@ -50,39 +53,49 @@ def docopt_cmd(func):
 
 
 class MyInteractive (cmd.Cmd):
-    intro = 'Welcome to my interactive program!' \
+    intro = 'Welcome to my Interactive Program!' \
         + ' (type help for a list of commands.)'
-    prompt = '(Dojo App) '
+    prompt = '(my_program) '
     file = None
 
     @docopt_cmd
     def do_create_room(self, arg):
-        """Usage: create_room <room_type> <room_name>...
-        """
-        # print('ruth is awesome')
+        """Usage: create_room <room_type> <room_name>... """
         room_type = arg["<room_type>"]
         rooms = arg["<room_name>"]
 
-        print(arg)
-        dojo.create_room(room_type, rooms)
+        if room_type and rooms:
+
+            print(arg)
 
     @docopt_cmd
     def do_add_person(self, arg):
-        """Usage: add_person <last_name> <first_name> <person_type> [<wants accomodation>]
+        """Usage:  add_person <last_name> <first_name> <person_type> [wants accomodation]
         """
         
+        last_name = arg["<last_name>"]
+        first_name = arg["<first_name>"]
+        person_type = arg["<person_type"]
 
-        print(arg)
+
+        if arg["--wants_accomodation"] is None:
+            wants_accomodation = "N"
+        else:
+            wants_accomodation = arg["--wants_accomodation"]
+      
+      # print(type(wants_accomodation))
+            print(arg)
 
     def do_quit(self, arg):
-        """Quits out of Interactive Mode."""
+        """This quits out of Interactive Mode."""
 
-        print('Good Bye!')
+        print('GOOD BYE!')
         exit()
 
 opt = docopt(__doc__, sys.argv[1:])
 
 if opt['--interactive']:
     MyInteractive().cmdloop()
+
 
 print(opt)

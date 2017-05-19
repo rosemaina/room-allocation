@@ -7,6 +7,8 @@ class Dojo(object):
 	def __init__(self):  
 		self.all_rooms = []
 		self.all_persons = []
+		self.office_list = []
+		self.living_space_list = []
 
 
 
@@ -33,17 +35,18 @@ class Dojo(object):
 			return ('A person called %s has been created.') %(last_name+" "+first_name)
 
 	def create_room(self, room_type, room_name):
-		if type(room_name) != str or type(room_type) != str:
-			raise ValueError ("input should be strings")
+		# if type(room_name) != str or type(room_type) != str:
+		# 	raise ValueError ("input should be strings")
 
-		else: 
-			room_name = room_name.lower()
-			room_type = room_type.lower()
+		
+		room_name = [room.lower() for room in room_name]
+		room_type = room_type.lower()
 
 
 		if room_type == "office" :
 			office = Office(room_name)
 			self.office_list.append(office)
+			print ('An office called %s has been created.' %room_name)
 
 			return ('An office called %s has been created.') %(room_name)
 		
