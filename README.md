@@ -1,2 +1,2 @@
-# room-allocation
-A working and living space allocation application
+# Dojo
+This is a room allocation application
